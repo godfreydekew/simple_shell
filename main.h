@@ -1,21 +1,21 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <stdio.h>   // Standard I/O functions
-#include <stdlib.h>  // Standard library functions
-#include <string.h>  // String manipulation functions
-#include <unistd.h>  // POSIX operating system API
-#include <sys/types.h>  // Data types used in system calls
-#include <sys/wait.h>   // Process management
-#include <sys/stat.h>   // File status and permissions
-#include <fcntl.h>   // File control options
-#include <signal.h>   // Signal handling
-#include <errno.h>   // Error handling
-#include <dirent.h>   // Directory manipulation
-#include <pwd.h>   // Password and group database access
-#include <grp.h>   // Group database access
-#include <time.h>   // Date and time functions
-#include <termios.h>   // Terminal I/O
+#include <stdio.h>   
+#include <stdlib.h>  
+#include <string.h>  
+#include <unistd.h>  
+#include <sys/types.h>  
+#include <sys/wait.h> 
+#include <sys/stat.h> 
+#include <fcntl.h>
+#include <signal.h>
+#include <errno.h>
+#include <dirent.h>
+#include <pwd.h>
+#include <grp.h>
+#include <time.h>   
+#include <termios.h>   
 int runfork(void);
 void executeCommand(char **arguments);
 void freeArguments(char **arguments);
@@ -26,6 +26,5 @@ void my_exit(char **argss);
 void trimNewline(char *str);
 int checkAndExecute(char **arguments);
 
-
 #define MAX_INPUT_SIZE 1024
-#endif 
+#endif  

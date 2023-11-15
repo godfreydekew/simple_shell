@@ -233,7 +233,8 @@ void executeCommand(char **arguments)
  * @arguments: Array of strings representing the command and its arguments
  */
 
-void freeArguments(char **arguments) {
+void freeArguments(char **arguments)
+{
    	 int i = 0;
    	 while (arguments[i])
 	 {
@@ -253,9 +254,9 @@ void freeArguments(char **arguments) {
  * Return: 0 on successful completion
  */
 
-int main(int argc, char *argv[], char *env[]) {
-   	 int i, x = 0;
-   	 char filepath[256];
+int main(void)
+{
+   	 char **arguments, filepath[256];	
 
    	 while (1)
     	 {
@@ -272,7 +273,7 @@ int main(int argc, char *argv[], char *env[]) {
            		 continue;
        		 }
 
-       		 char **arguments = my_strtok(filepath, ' ');
+       		 arguments = my_strtok(filepath, ' ');
        		 my_exit(arguments);
 
  		 if (my_setenv_unset(arguments) == 0 || !checkAndExecute(arguments))
