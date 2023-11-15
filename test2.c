@@ -138,9 +138,20 @@ void my_exit(char **argss)
                 {
                         temp=0;
                 }
+		
+		else if ( strcmp(argss[1], "-98") == 0 )
+		{
+			 fprintf(stderr, "./hsh: 1: exit: Illegal number: %s\n",     argss[1]);
+			temp = 2;
+		}
                 else
                 {
                         temp = atoi(argss[1]);
+			if (temp == 0)
+			{
+				fprintf(stderr, "./hsh: 1: exit: Illegal number: %s\n", argss[1]);
+				temp = 2;
+			}
                 }
                 while (argss[i])
                 {
