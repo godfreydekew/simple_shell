@@ -192,7 +192,7 @@ int checkAndExecute(char **arguments)
          }
 	 else 
 	 {
-                 fprintf(stderr, "Bash: Command not FOUND\n");
+                 fprintf(stderr, "./hsh: 1: %s: not found\n", arguments[0]);
                  return (0);
          }
 }
@@ -256,14 +256,16 @@ void freeArguments(char **arguments)
 
 int main(void)
 {
-   	 char **arguments, filepath[256];	
+   	 char **arguments, filepath[256];
+	 int exit_status = 0;
 
    	 while (1)
     	 {
-	  	 write(STDOUT_FILENO, "#cisfun$ ", 9);
+		 if (isatty(0))
+	  	 	write(STDOUT_FILENO, "#cisfun$ ", 9);
        		 if (fgets(filepath, sizeof(filepath), stdin) == NULL)
 		 {
-           		 exit(1);
+           		 exit(exit_status);
 		 }
 
 	         trimNewline(filepath);
@@ -278,8 +280,10 @@ int main(void)
 
  		 if (my_setenv_unset(arguments) == 0 || !checkAndExecute(arguments))
   		 {
-           		 continue;
+           		 exit_status = 127;
        		 }
+		 else
+		 	exit_status = 0;
    	 }
 
    	 return (0);
